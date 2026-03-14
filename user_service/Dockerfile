@@ -1,20 +1,20 @@
-# Dockerfile
-FROM node:18
+# Use a modern Node image
+FROM node:20
 
 # Set working directory
 WORKDIR /app
 
-# Copy package.json and package-lock.json first
+# Copy package.json and package-lock.json
 COPY package*.json ./
 
 # Install dependencies
 RUN npm install
 
-# Copy all files
+# Copy rest of the app
 COPY . .
 
-# Expose the service port
+# Expose port
 EXPOSE 4002
 
-# Start the app
+# Start app
 CMD ["node", "server.js"]
